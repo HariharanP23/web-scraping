@@ -19,7 +19,17 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render "layouts/header" %>
+    <main class="container mx-auto mt-28 px-5">
+      <% if flash[:notice] %>
+        <div class="flash-message bg-green-500 text-white p-3 rounded-md mb-4">
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="flash-message bg-red-500 text-white p-3 rounded-md mb-4">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>
